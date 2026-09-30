@@ -456,8 +456,6 @@ def test_power_with_zero_base_negative_exponent():
     assert str(exc_info.value) == "Cannot raise zero to a negative power"
 
 
-
-
 # -----------------------------------------------------------------------------------
 # Test Invalid Input Types (Negative Testing)
 # -----------------------------------------------------------------------------------
@@ -483,3 +481,4 @@ def test_operations_invalid_input_types(calc_method, a, b, expected_exception):
     # Act & Assert
     with pytest.raises(expected_exception):
         calc_method(a, b)
+

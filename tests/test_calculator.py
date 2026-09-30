@@ -91,6 +91,7 @@ def test_display_history_with_entries(capsys):
         "SubtractCalculation: 20.0 Subtract 3.0 = 17.0",
         "MultiplyCalculation: 7.0 Multiply 8.0 = 56.0",
         "DivideCalculation: 20.0 Divide 4.0 = 5.0",
+        "PowerCalculation: 2.0 Power 3.0 = 8.0"
     ]
 
     # Act
@@ -103,6 +104,7 @@ def test_display_history_with_entries(capsys):
 2. SubtractCalculation: 20.0 Subtract 3.0 = 17.0
 3. MultiplyCalculation: 7.0 Multiply 8.0 = 56.0
 4. DivideCalculation: 20.0 Divide 4.0 = 5.0
+5. PowerCalculation: 2.0 Power 3.0 = 8.0
 """
     assert captured.out.strip() == expected_output.strip()
 
