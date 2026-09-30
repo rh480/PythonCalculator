@@ -20,3 +20,11 @@ class Operations:
         if b == 0:  # Checks if 'b' is zero. If it is, we raise an error and stop the function.
             raise ValueError("Division by zero is not allowed.")  # This sends an error message when someone tries to divide by zero.
         return a / b  # If 'b' is not zero, we divide the first number (a) by the second number (b) and return the result.
+   
+    @staticmethod
+    def power(a: float, b: float) -> float:
+        if a == 0 and b < 0:
+            raise ValueError("Cannot raise zero to a negative power")
+        return a ** b
+
+
