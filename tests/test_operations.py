@@ -338,6 +338,127 @@ def test_division_with_zero_numerator():
 
 
 # -----------------------------------------------------------------------------------
+# Test Power Method
+# -----------------------------------------------------------------------------------
+
+def test_power_positive():
+    """
+    Test the power method with two positive numbers.
+    
+    This test verifies that raising a positive number to the power of another positive number returns the correct result.
+    """
+    # Arrange
+    a = 2.0
+    b = 3.0
+    expected_result = 8.0
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+    """
+    This test verifies that raising a positive number to the power of another positive number returns the correct result.
+    """
+    # Arrange
+    a = 2.0
+    b = 3.0
+    expected_result = 8.0
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+
+
+def test_power_negative_numbers():
+    """
+    Test the power method with two negative numbers.
+    
+    This test verifies that raising a negative number to the power of another negative number returns the correct result.
+    """
+    # Arrange
+    a = -2.0
+    b = -3.0
+    expected_result = -0.125
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+
+
+def test_power_positive_negative():
+    """
+    Test the power method with one positive and one negative number.
+    
+    This test verifies that raising a positive number to the power of a negative number returns the correct result.
+    """
+    # Arrange
+    a = 10.0
+    b = -5.0
+    expected_result = 0.00001
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+
+
+def test_power_with_zero():
+    """
+    Test the power method with zero as the base.
+
+    This test verifies that raising zero to any positive power returns zero.
+    """
+    # Arrange
+    a = 0.0
+    b = 5.0
+    expected_result = 0.0
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+    """
+    This test verifies that raising any number to the power of zero returns one.
+    """
+    # Arrange
+    a = 10.0
+    b = 0.0
+    expected_result = 1.0
+
+    # Act
+    result = Operations.power(a, b)
+
+    # Assert
+    assert result == expected_result, f"Expected {a} ** {b} to be {expected_result}, got {result}"
+
+def test_power_with_zero_base_negative_exponent():
+    """
+    Test the power method with zero as the base and a negative exponent.
+
+    This test verifies that raising zero to a negative power raises a ValueError.
+    """
+    # Arrange
+    a = 0.0
+    b = -1.0
+
+    # Act & Assert
+    with pytest.raises(ValueError) as exc_info:
+        Operations.power(a, b)
+
+    # Verify that the exception message is as expected
+    assert str(exc_info.value) == "Cannot raise zero to a negative power"
+
+
+
+
+# -----------------------------------------------------------------------------------
 # Test Invalid Input Types (Negative Testing)
 # -----------------------------------------------------------------------------------
 
@@ -346,6 +467,8 @@ def test_division_with_zero_numerator():
     (Operations.subtraction, 10.0, '5', TypeError),
     (Operations.multiplication, '10', '5', TypeError),
     (Operations.division, 10.0, '5', TypeError),
+    (Operations.division, 10.0, 0.0, ValueError),  # Division by zero case
+    (Operations.power, 2.0, '3', TypeError),
 ])
 def test_operations_invalid_input_types(calc_method, a, b, expected_exception):
     """

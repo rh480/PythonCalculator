@@ -40,6 +40,7 @@ Usage:
         subtract  : Subtracts the second number from the first.
         multiply  : Multiplies two numbers.
         divide    : Divides the first number by the second.
+        power     : Raises the first number to the power of the second.
 
 Special Commands:
     help      : Display this help message.
@@ -51,6 +52,7 @@ Examples:
     subtract 15.5 3.2
     multiply 7 8
     divide 20 4
+    power 2 3
 """
     # Remove leading/trailing whitespace for comparison
     assert captured.out.strip() == expected_output.strip()
@@ -285,6 +287,18 @@ def test_calculator_power(monkeypatch, capsys):
     - Act: Call the calculator function.
     - Assert: Verify that the correct result is displayed.
     """
+    # Arrange
+    user_input = 'power 2 3\nexit\n'
+    monkeypatch.setattr('sys.stdin', StringIO(user_input))
+    
+    # Act
+    with pytest.raises(SystemExit):
+        calculator()
+
+    # Assert
+    captured = capsys.readouterr()
+    assert "Result: PowerCalculation: 2.0 Power 3.0 = 8.0" in captured.out
+
 
 def test_calculator_history(monkeypatch, capsys):
     """
